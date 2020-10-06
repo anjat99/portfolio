@@ -1,0 +1,855 @@
+/* fonts */
+@import url(https://fonts.googleapis.com/css?family=Bangers|Fresca);
+
+//navigacija - font
+@font-face {
+    font-family: navFont;
+    src: url(../fonts/SFMonoRegular.otf);
+}
+
+//naslovi - font
+@font-face {
+  font-family: naslovFont;
+  src: url(../fonts/CalibreSemibold.otf);
+}
+
+/*variables*/
+$bela: #fff;
+$crna: #000;
+$svetlo-siva: #dee2e6;
+$svetloSiva: #d3cdcd;
+$siva: #65737e;
+$tamno-siva: #262626;
+$plava:rgb(2, 2, 44);
+$tamno-plava: #343a40;
+$pozadinskaBoja: #343a40;
+$pozBojaSadrzaja: #212529;
+$svetlo-narandzasta: #efc050;
+$senka: #cfa33b;
+$padding: 10px;
+
+/*mixins*/
+@mixin resetMarginPadding{
+    padding: 0;
+    margin: 0;
+}
+
+@mixin fontNaslov($font, $fontSize){
+    font: {
+        family: $font;
+        size: $fontSize;
+    }
+}
+@mixin navFont($fontSize, $color){
+    font: {
+        family: 'navfont';
+        size: $fontSize;
+    }
+    color:$color;
+}
+@mixin fleksCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin fleksRow{
+    display: flex;
+    flex-direction: row;
+}
+@mixin fleksColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+//za fontove razlicite od onih navedenih u @font-face
+@mixin tekstStil ($fontSize, $font, $boja) {
+        font-size: $fontSize;
+        font-family: $font;
+        color:$boja;
+}
+@mixin tekstStilSve ($fontSize, $font, $boja,$poravnanje) {
+        @include tekstStil($fontSize,$font ,$boja);
+        text-align: $poravnanje;
+}
+
+@mixin bojaIDebljinaSlova($boja, $debljinaSlova){
+    color:$boja;
+    font-weight: $debljinaSlova;
+}
+
+@mixin fontDefault {
+    ul{
+        list-style-type: none;
+    }
+    a{
+        text-decoration: none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+@mixin bojaSaOpacity($opacity) {
+    color: rgba(0, 0, 0, $opacity);
+} 
+@mixin pozadinaIntro($putanja) {
+    background: {
+        image: url($putanja);
+        repeat: no-repeat;
+        size: cover;
+    };
+}
+@mixin stilLinija($top, $left, $pozBoja, $sirina, $visina){
+    content: "";
+    display: block;
+    width:$sirina;
+    height: $visina;
+    background-color: $pozBoja;
+    position: absolute;
+    top: $top;
+    left:$left;
+}
+
+@mixin stilSpanLinija($sirina){
+    width:$sirina;
+    height: 1px;
+    position: absolute;
+    margin: {
+        top:1.5%;
+        left: 20px;
+    }
+    border-top: 2px double $tamno-siva;
+}
+
+@mixin stilNaslovEdukacija{
+    .naslov{
+        h2{
+            @include fontNaslov('naslovFont',220%); 
+            @include bojaIDebljinaSlova($bela,bold);
+            text-align: center;
+        }
+    }
+}
+
+$brojKlasa: 4;
+@mixin linijePosleNaslova {
+  @for $i from 1 through $brojKlasa {
+      h3{
+          &.posle#{$i} {
+            @include fontNaslov('naslovFont',220%); 
+          }
+      }
+      .posle#{$i} {
+          @if $i==1 {
+            @include bojaIDebljinaSlova($tamno-siva,bold);
+          }
+          @else if $i==2 {
+            @include bojaIDebljinaSlova($tamno-siva,bold);
+          }
+          @else if $i==3 {
+            @include bojaIDebljinaSlova($tamno-siva,bold);
+          }
+          @else if $i==4 {
+            @include bojaIDebljinaSlova($tamno-siva,bold);
+          }
+      }
+  }
+}
+
+
+/**** osnovna podesavanja ****/
+*{
+    @include resetMarginPadding;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+ul{
+    list-style-type: none;
+    
+}
+a{
+    text-decoration: none;
+}
+.cleaner{
+    clear: both;
+}
+.fab, .fas, .far{
+    color: rgb(2, 2, 44);
+    font-size: 100%;
+    margin-bottom:5%;
+  }
+.active{
+    a{
+        color:$bela!important;
+    }
+}
+
+/*-------> scrollbar <-------*/
+/* width */
+::-webkit-scrollbar {
+    width: .7em;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 20px;
+    scrollbar-darkshadow-color: 0 0 10px $crna;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: grey; 
+    border-radius: 20px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(104, 102, 102); 
+    border-radius: 10px;
+}
+/******** end ************/
+
+/* header - logo i navigacija */
+#header{
+    width: 100%;
+    background:$pozadinskaBoja !important;
+    position:fixed;
+    z-index: 2;
+    @include fleksRow;
+    justify-content: space-between;
+    border-bottom: 1px solid $svetlo-siva!important;
+    color:$bela;
+    #logo{
+        height: 60px;
+        padding: $padding;
+        img{
+            height: 40px;
+            margin-right: -0.2rem;
+        }
+        a{
+            @include navFont(1.1rem, $bela);
+            text-decoration: none;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        .alignTop{
+            vertical-align: middle !important;
+            font-weight: bold;
+            display: inline-block;
+        }
+    }
+    #navigacija{
+        height: 60px;
+        @include fleksCenter;
+        margin-top: 0;
+        padding: {
+            top:$padding;
+            right:$padding/2;
+        }
+        ul{
+            list-style-type: none;
+            width: 100%;
+            height: 50px;
+            @include fleksRow;
+            padding-left: 0;
+            margin: {
+                top:0;
+                bottom:0;
+            }
+           li{
+               padding: $padding;
+               &:hover{
+                    @include fontDefault;
+                    color:$bela!important;
+               }
+               a{
+                   text-decoration: none;
+                   @include bojaIDebljinaSlova($siva,bold);
+                   font-size: 1.3rem;
+                   &:hover{
+                       text-decoration: none;
+                       @include bojaIDebljinaSlova($bela!important,bolder);
+                   }
+               }
+            }        
+        }
+    } 
+}
+
+/******* intro *******/
+#intro{
+    max-width:100%;
+    height: 100vh;
+    display: flex;
+    @include pozadinaIntro("../images/header.jpg");
+    background: {
+        attachment:fixed;
+        position:left bottom;
+    };
+    @include resetMarginPadding;
+    z-index: 1;
+    #introTekst{
+        @include fleksCenter;
+        margin:0px auto;
+        position: absolute;
+        z-index: 1;
+        top: 20%;
+        left:40%;
+        word-wrap: none;
+        h1{
+            width: auto;
+            margin-right: 0;
+            line-height: 250%;
+            @include fontNaslov('Bangers',4.8rem );
+            text-align: center;
+            @include bojaSaOpacity(.6);
+            letter-spacing: 2.5px;
+            &::after{
+                @include stilLinija(51%,35% ,#efc050, 80%,5px);
+            }
+            p{
+                width: auto;
+                margin-left: 40%;
+                line-height: 100%;
+                font-weight: bold;
+                @include bojaSaOpacity(.6);
+                @include fontNaslov('Bangers',50% );
+                span{
+                    margin-left: 50%;
+                }
+                &::before{
+                    @include stilLinija(58%,48% , #efc050, 73%, 5px);
+                }
+            }
+        }
+    }
+}
+
+/******* SADRZAJ *******/
+#sadrzaj{
+    max-width: 100%;
+    min-height:100%;
+    background:url("../images/blank-cement-concrete.jpg");
+    .okvir{
+        max-width:88%;
+        margin: 0px auto;
+    }
+}
+.naslov{
+    padding-top: 5%;
+    @include linijePosleNaslova;
+}
+
+h3{
+    &.posle{
+        @include fontNaslov('naslovFont',220% );
+        @include bojaIDebljinaSlova($tamno-siva,bold);
+    }
+}
+span{
+    &.broj{
+            color:$plava;
+    
+    }
+}
+
+/*****  O MENI  ******/
+.linijaAbout{
+    @include stilSpanLinija(35%);  
+}
+#frame{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin-left:.25rem; 
+    padding: {
+        top:3rem;
+        right:4rem;
+        left:2rem;
+    }
+    #autor{
+        max-width: 35%;
+    }
+    #biografija{
+        width: 55%;
+        padding-top: 1rem;
+        p{
+            &.me {
+                text-align: justify;
+                font: {
+                    size:120%;
+                    family:'Open Sans', sans-serif;
+                }
+                color: $tamno-siva!important;
+              }
+        }
+    }
+}
+
+#cv{
+    width: 40%;
+    padding-bottom: 2%!important;
+    margin: {
+        top: 5%;
+        left:1%;
+    }
+    background: transparent;
+    box-shadow:3px 3px 5px #666;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+    border-radius:10px;
+        a{
+            text-decoration: none;
+            @include bojaIDebljinaSlova($crna,bold);
+            line-height: 110%;
+            font: {
+                size: 1.2rem;
+                family: sans-serif;
+            }
+        }
+        &:hover{
+            box-shadow:3px 3px 5px $tamno-siva;
+            font-weight:bolder;
+            cursor:pointer;
+            text-decoration: none;
+        }
+}
+
+/******  SKILLS  ******/
+.linijaSkills{
+    @include stilSpanLinija(40%);
+}
+#frameSkills{
+    max-width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    margin-left:0rem; 
+    padding: {
+        top:3rem;
+        right:0rem;
+        left:0rem;
+    }
+    .skill{
+        flex-basis: 25%;
+        padding: $padding;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        .polygon{
+            i{
+                color:$crna!important;
+                font-size: 7rem;
+            }
+        }
+        .skillNaslov{
+            @include bojaIDebljinaSlova($plava,bold );
+            font-size:1.4rem;
+            text-transform: uppercase;
+        }
+        .skillOpis{
+                text-align: justify;
+                padding-top: 5%;
+                font-size:1.2rem;
+                color:$pozadinskaBoja;
+        }
+    }
+}
+
+/******  PROJECTS  ******/
+.linijaProjects{
+    @include stilSpanLinija(30%);
+}
+#frameProjects{
+    max-width:100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    position:relative;
+    z-index: 1;
+    margin-left:0rem; 
+    padding: {
+        top:3rem;
+        right:0;
+        left:0;
+    }
+    .project{
+        width:24%;
+        height:80%;
+        border-radius:5%;
+        padding: $padding;
+        box-shadow: 2px 0px 5px transparent;
+    }
+    .picture{
+        position: relative;
+        border: 1px solid transparent;
+        border-radius: 5%; 
+            img{
+                width:100%;
+                height:80%;
+                border-radius:5%;
+            }
+    }  
+    .textHover {
+        position: absolute;
+        z-index: 2;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        padding:5%;
+        background-color:rgba(255, 255, 255, 0.7);
+        border:1px solid $crna;  
+        border-radius: 5%;
+        transition: .5s ease;
+        font: {
+            weight: 700;
+            family:'Open Sans', sans-serif;
+            size: .8rem;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        opacity: 0;
+            &:hover{
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.7);
+                color:$bela;
+                padding-top:13%;
+            }
+            a{
+                @include bojaIDebljinaSlova($bela,bolder);
+                    &:hover{
+                        cursor: pointer;
+                        color:$bela;
+                    }
+                    &:active{
+                        @include bojaIDebljinaSlova($bela,bolder);
+                    }
+            }
+    }
+}
+
+.visit{
+    width: 40%;
+    padding-bottom: 2%!important;
+    margin: {
+        top: 5%;
+        left:auto;
+    }
+    font-size: .9rem;
+    background: transparent;
+    box-shadow:3px 3px 5px $svetloSiva;
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.7);
+    border-radius:10px;
+    &:hover{
+        cursor:pointer;
+        background: $senka;
+        a{
+            color: $crna!important;
+        }
+    }
+    a{
+        text-decoration: none;
+        @include bojaIDebljinaSlova($svetloSiva,bold);
+        line-height: 110%;
+        font: {
+            size: .9rem;
+            family: sans-serif;
+        }
+        margin-bottom: 3%;
+        
+    }
+}
+.visitSoon{
+    @extend .visit;
+    width: 100% !important;
+    font-size: 20%;
+    padding:10%;
+}
+
+/****** OBRAZOVANJE  ******/
+.linijaEdu{
+    @include stilSpanLinija(30%);
+}
+#education{
+    width:100%;
+    padding:0.5em;
+}
+.text-edu{
+    width:50%;
+    margin:0px auto;
+    word-wrap: none;
+    border:none;
+        h1{
+            text: {
+                transform: uppercase;
+                align:center;
+            }
+            font: {
+                weight:bolder;
+                size:220%;
+                family: 'Open Sans', sans-serif;
+            }
+         }
+         .edu{
+             margin-top:-50%;
+         }
+}
+.timeline{
+    max-width:100%;
+    position:relative;
+    left:0;
+    top:0;
+    margin:40px auto;
+        img{
+            width:100%;
+            height:670px;
+            border-radius:20%;
+        }
+        &::after {
+            content:'';
+            position:absolute;
+            width:6px;
+            background-color:$bela;
+            top:0;
+            bottom:0;
+            left:50%;
+            margin-left:-3px;
+            border-radius:20px;
+        }
+}
+.container{
+    width:50%;
+    padding:$padding $padding*4;
+    position:relative;
+    background-color:inherit;
+    bottom:98%;
+        &::after{
+            content:'';
+            position:absolute;
+            width:25px;
+            height:25px;
+            right:-17px;
+            background-color:$bela;
+            border:4px solid $senka;
+            top:32px;
+            border-radius:50%;
+            z-index:1;
+        }
+}
+.left{
+    left:0px;
+        &::before{
+            content:" ";
+            height:0;
+            position:absolute;
+            top:40px;
+            width:0;
+            z-index:1;
+            right:32px;
+            border:medium solid $bela;
+            border-radius:10px;
+            border-width: $padding 0 $padding $padding;
+            border-color:transparent transparent transparent $bela;
+        }
+}
+.right{
+    left:50%;
+        &::before{
+            content:" ";
+            height:0;
+            position:absolute;
+            top:40px;
+            width:0;
+            z-index:1;
+            left:32px;
+            border-radius:10px;
+            border: medium solid $bela;
+            border-width: $padding $padding $padding 0;
+            border-color:transparent $bela transparent transparent;
+        }
+        &::after{
+            left:-16px;
+        }
+}
+.content{
+    width:100%;
+    padding:$padding*2 $padding*3;
+    background-color:$bela;
+    position:relative;
+    top:-50%;
+    border-radius:25%;
+        h2 {
+            line-height:160%;
+            font: {
+                size: 155%;
+                family: 'Open Sans', sans-serif;
+            }
+        }
+        p{
+            font-family: 'Open Sans', sans-serif;
+        }
+}
+/**end***/
+
+/******** KONTAKT *******/
+.linijaContact{
+    @include stilSpanLinija(30%);
+}
+#frameContact{
+    .uvod{
+        width:80%;
+        margin:5px auto;
+    }
+    #kontaktForma{
+        margin:0px auto;
+        width:100%;
+        .okvirForma{
+            width:60%;
+        margin:0px auto;
+        }
+    }
+}
+
+.podnaslov{
+    color:$pozadinskaBoja;
+    padding-bottom: 1rem!important;
+    font-size: 1.7rem;
+    margin-bottom: .5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 5%;
+  text-align: center!important;
+}
+
+.border{
+    background: #292a2b;
+    color: $bela;
+    &:focus{
+        background: #434344;
+    }
+}
+
+.area{
+    height:150px;
+}
+
+#btn{
+    padding: 0;
+    &:hover{
+        background-color: $tamno-plava;
+        .far{
+            color:$bela;
+            font-weight: bold;
+            font-size: 83%;
+            transition: .5s;
+        }
+    }
+    .far{
+        color:$siva;
+        font-size: 80%;
+    }
+}
+
+.boja{
+    background: $tamno-siva;
+    font-family: 'Open Sans', sans-serif;
+    border:1px solid #65737e;
+    box-shadow: 3px 3px 5px #666;
+    a{
+        line-height: 115%;
+        font-size: 110%;
+        font-weight: bold;
+        font-family: 'Open Sans', sans-serif;
+        color: #65737e;
+    }
+    &:hover{
+        box-shadow: 4px 4px 6px rgb(68, 67, 67);
+        font-weight: bolder;
+        cursor: pointer;
+    }
+
+}
+
+input,textarea{
+    transition: .5s;
+    width: 100%;
+    padding: 15px;
+    border: 3px solid transparent;
+    margin: 10px 0;
+    resize: none;
+    border-radius: 5px;
+
+}
+
+button{
+    transition: .5s;
+    border: 2px solid transparent;
+    background-color: $bela;
+    border-radius: 5px;
+    font-size: 35px;
+    color: #444649;
+    margin: 0px 30%;
+    margin-bottom: 10%;
+    margin-left: 35%;
+    width:20%;
+}
+
+/******** FOOTER ***************/
+#footer{
+    max-width: 100%;
+    background:$pozadinskaBoja !important;
+    padding: $padding*2;
+    .centar{
+        max-width:93%;
+        margin: 0px auto;
+    }
+}
+#footer{
+    #korisniLinkovi{
+        max-width:100%;
+            ul{
+                width:auto;
+                height: auto;
+                @include fleksCenter;
+                flex-direction: row;
+                    li{
+                        padding: $padding*2;
+                            a{
+                                text-align: center;
+                                font-size: 1.5rem;
+                                    &:hover{
+                                        text-shadow: 1px 1px 2px $bela;
+                                    }
+                            }
+                    }
+            }
+    }
+    p{
+        text-align: center;
+        color:$svetloSiva;
+    }
+}
+
+/***animation**/
+/* Box Shadow Outset */
+.hvr-box-shadow-outset {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-box-shadow-outset:hover, .hvr-box-shadow-outset:focus, .hvr-box-shadow-outset:active {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+  }
+  

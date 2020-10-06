@@ -1,0 +1,493 @@
+@charset "UTF-8";
+/*----------------> za sirine ekrana 1440px i vece <----------------*/
+@media screen and (min-width: 1440px) {
+  .naslov {
+    top: 100% !important;
+    left: 25% !important;
+    width: 34% !important;
+  }
+}
+
+/*----------------> za sirine ekrana 1360px i manje, a vece od 1286px <----------------*/
+@media screen and (max-width: 1360px) {
+  #intro {
+    height: 70vh;
+  }
+}
+
+/*----------------> za sirine ekrana 1286px i manje, a vece od 1024px <----------------*/
+@media screen and (max-width: 1286px) {
+  .visit {
+    width: 50%;
+  }
+  .visit a {
+    font-size: 1rem;
+  }
+  .textHover {
+    font-size: .2rem;
+  }
+  .textHover:hover {
+    opacity: 0;
+  }
+}
+
+/*----------------> za sirine ekrana 1024px i manje, a vece od 991px <----------------*/
+@media screen and (max-width: 1024px) {
+  #frameSkills .skill {
+    -ms-flex-preferred-size: 27%;
+        flex-basis: 27%;
+  }
+  #frameProjects .project {
+    width: 30%;
+  }
+}
+
+/*----------------> za sirine ekrana 991px i manje, a vece od 767px <----------------*/
+@media screen and (max-width: 991px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  #cv {
+    width: 55%;
+  }
+  #frameProjects {
+    width: 80%;
+    height: 900px;
+    padding-top: 1.3rem;
+    margin-left: 8%;
+  }
+  #frameProjects .project {
+    height: 100px;
+  }
+  #frameProjects .project:nth-last-child(1), #frameProjects .project:nth-last-child(2) {
+    height: 30px;
+  }
+  #frameProjects .textHover {
+    width: 100%;
+    opacity: 1;
+    border-radius: none;
+    border: none;
+    background: transparent;
+    font-size: .8rem;
+    height: 150px;
+    margin-top: 100%;
+    margin-bottom: 10%;
+  }
+  .visit {
+    width: 90%;
+    margin-right: 1.8rem;
+    padding-bottom: 50%;
+    font-size: .9rem;
+  }
+}
+
+/*----------------> za sirine ekrana 820px i manje <----------------*/
+@media screen and (max-width: 820px) {
+  #frameSkills .skill {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+  }
+  #frameProjects {
+    height: 800px;
+    padding-top: 1.2rem;
+    margin-left: 8%;
+  }
+  #frameProjects .textHover {
+    font-size: .7rem;
+    height: 140px;
+  }
+  .visit {
+    width: 80%;
+    margin-left: 20%;
+    margin-top: 5%;
+    padding-bottom: 50%;
+    font-size: 1rem;
+  }
+}
+
+/*----------------> za sirine ekrana 767px i manje <----------------*/
+@media screen and (max-width: 767px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  /***header***/
+  #header {
+    padding-bottom: 12px;
+    margin-top: 0px;
+    min-height: 300px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-line-pack: space-evenly;
+        align-content: space-evenly;
+    position: relative;
+  }
+  #header #logo {
+    width: 100%;
+  }
+  #header #logo img {
+    margin-right: 0;
+    margin-left: 40%;
+  }
+  #header #logo a {
+    font-size: 1.3rem;
+    display: none;
+  }
+  #header #logo a:hover {
+    text-decoration: none;
+  }
+  #header #navigacija {
+    padding-top: 0px;
+    height: 300px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 10%;
+  }
+  #header #navigacija ul {
+    height: 300px;
+    padding-bottom: 20px;
+    margin-left: 35%;
+    margin-bottom: 10%;
+    margin-top: 2%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #header #navigacija ul li {
+    padding: 4.8%;
+    padding: 5%;
+  }
+  #header #navigacija ul li:hover {
+    height: 200px !important;
+  }
+  #header #navigacija ul li a {
+    font-size: 1.9rem;
+  }
+  #intro {
+    height: 55vh;
+    background-position: 30% 50%;
+  }
+  #intro #introTekst {
+    position: relative;
+    top: 0%;
+    left: -10%;
+  }
+  #intro #introTekst h1 {
+    font-size: 4rem;
+  }
+  #intro #introTekst p::before {
+    position: absolute;
+    top: 40%;
+  }
+  .linijaAbout {
+    display: none;
+  }
+  .linijaSkills {
+    display: none;
+  }
+  .linijaProjects {
+    display: none;
+  }
+  .linijaEdu {
+    display: none;
+  }
+  .linijaContact {
+    display: none;
+  }
+  h3.posle {
+    font-size: 2.1rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  h3.posle1 {
+    font-size: 2.1rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  h3.posle2 {
+    font-size: 1.9rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  h3.posle3 {
+    font-size: 1.8rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  h3.posle4 {
+    font-size: 1.9rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  /*** about me ***/
+  #frame {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #frame #autor {
+    max-width: 100%;
+  }
+  #frame #biografija {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  #frame #biografija p.me {
+    font-size: 105%;
+    font-weight: bold;
+    word-spacing: normal;
+  }
+  #frameSkills .skill {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+  }
+  #frameProjects .project {
+    width: 45%;
+  }
+  #frameProjects {
+    height: 900px;
+    padding-top: 1.2rem;
+    margin-left: 8%;
+  }
+  #frameProjects .textHover {
+    font-size: .7rem;
+    height: 140px;
+    margin-top: 85%;
+  }
+  .timeline::after {
+    left: 12%;
+    margin-left: 0px;
+  }
+  .container {
+    width: 90%;
+  }
+  .container::after {
+    right: 88%;
+  }
+  .right {
+    left: 0%;
+  }
+  .right::after {
+    left: 4%;
+  }
+  .right::before {
+    left: 13%;
+  }
+  .left::before {
+    right: 85%;
+    -webkit-transform: rotate(187deg);
+            transform: rotate(187deg);
+  }
+  .content {
+    left: 7%;
+  }
+}
+
+/*----------------> za sirine ekrana 740px i manje <----------------*/
+@media screen and (max-width: 740px) {
+  h3.posle2 {
+    font-size: 1.55rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  .podnaslov {
+    font-size: 1.2rem;
+  }
+  .right::after {
+    left: 4%;
+  }
+  .right::before {
+    left: 15%;
+  }
+  .left::before {
+    right: 82%;
+  }
+}
+
+/*----------------> za sirine ekrana 600px i manje <----------------*/
+@media screen and (max-width: 600px) {
+  #cv {
+    width: 50%;
+  }
+  h3.posle2 {
+    font-size: 1.3rem !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  .content p {
+    font-size: .95rem;
+  }
+  .right {
+    left: 0%;
+  }
+  .right::after {
+    left: 3%;
+  }
+  .right::before {
+    left: 15%;
+  }
+  .left::before {
+    right: 80%;
+    -webkit-transform: rotate(187deg);
+            transform: rotate(187deg);
+  }
+}
+
+/*----------------> za sirine ekrana 514px i manje <----------------*/
+@media screen and (max-width: 514px) {
+  h3.posle2 {
+    font-size: 120% !important;
+    border-bottom: 2px solid #000;
+    width: 55%;
+  }
+  #intro {
+    height: 50vh;
+  }
+  #intro #introTekst {
+    position: relative;
+    top: 0%;
+    left: -5%;
+  }
+  #intro #introTekst h1 {
+    font-size: 2.5rem;
+  }
+  #cv {
+    width: 60%;
+  }
+  #frameSkills .skill {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+  #frameProjects .project {
+    width: 100%;
+  }
+  #frameProjects {
+    height: 500vw;
+  }
+  #frameProjects .project:nth-last-child(1), #frameProjects .project:nth-last-child(2) {
+    height: 20px;
+  }
+  #frameProjects .textHover {
+    font-size: .9rem;
+    margin-top: 90%;
+  }
+  .content {
+    width: 110%;
+  }
+  .content p {
+    font-size: 1rem;
+  }
+  #frameContact #kontaktForma .okvirForma {
+    width: 90%;
+  }
+  .right {
+    left: 0%;
+  }
+  .right::after {
+    left: 4%;
+  }
+  .right::before {
+    left: 15%;
+  }
+  .left::before {
+    right: 81%;
+    -webkit-transform: rotate(191deg);
+            transform: rotate(191deg);
+  }
+}
+
+/*----------------> za širine ekrana 460px i manje <----------------*/
+@media screen and (max-width: 460px) {
+  .content p {
+    font-size: .9rem;
+  }
+}
+
+/*----------------> za širine ekrana 440px i manje <----------------*/
+@media screen and (max-width: 440px) {
+  #cv {
+    width: 55%;
+  }
+  #cv a {
+    font-size: 1rem;
+  }
+  .content p {
+    font-size: .5rem;
+  }
+}
+
+/*----------------> za širine ekrana 414px i manje <----------------*/
+@media screen and (max-width: 414px) {
+  #cv {
+    width: 70%;
+  }
+  #frameProjects {
+    height: 520vw;
+  }
+  #frameProjects .project:nth-last-child(1), #frameProjects .project:nth-last-child(2) {
+    height: 10px;
+  }
+  #footer #korisniLinkovi ul li {
+    padding: 15px;
+  }
+  #frame #biografija {
+    width: 100%;
+  }
+  .content p {
+    font-size: 1rem;
+  }
+}
+
+/*----------------> za sirine ekrana 360px i manje <----------------*/
+@media screen and (max-width: 360px) {
+  #frame #autor img {
+    max-width: 100%;
+  }
+  #frame #biografija {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+  #frame #biografija p.me {
+    font-size: 90%;
+    font-weight: bold;
+    word-spacing: normal;
+  }
+  #cv {
+    width: 80%;
+  }
+  .podnaslov {
+    padding-bottom: 1rem !important;
+    font-size: 1rem;
+  }
+  #frameProjects {
+    height: 550vw;
+  }
+  .container {
+    width: 90%;
+  }
+  .container::after {
+    right: 85%;
+  }
+  .right {
+    left: 0%;
+  }
+  .right::after {
+    left: 0%;
+  }
+  .right::before {
+    left: 21%;
+  }
+  .left::before {
+    right: 73%;
+    -webkit-transform: rotate(187deg);
+            transform: rotate(187deg);
+  }
+  #footer #korisniLinkovi ul li {
+    padding: 10px;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
